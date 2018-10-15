@@ -3,25 +3,30 @@
         <div class="container text-center mt-4">
             <h3>Rent Games Like These:</h3>
         </div>
-        <div class="row">
+        <PackageExample/>
+        <!-- <div class="row mt-3">
             <div class="br-curve-panel br-curve-panel-left">
                 <div class="br-curve-panel-inner">
                     <h2>£3.99 a Month</h2>
                 </div>
             </div>
-            <div class="container d-flex align-items-center justify-content-center mx-0">
-                <div class="row">
-                    <div v-for="(game,i) in package0Games" :key="i">
-                        <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-right: 25px;">
+            <div class="br-game-container">
+                <div class="container d-flex align-items-center justify-content-center mx-0">
+                    <div class="row">
+                        <div v-for="(game,i) in package0Games" :key="i">
+                            <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-right: 25px;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="container d-flex align-items-center justify-content-center mx-0">
-                <div class="row">
-                    <div v-for="(game,i) in package1Games" :key="i">
-                        <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-left: 25px;">
+        </div> -->
+        <div class="row mt-3">
+            <div class="br-game-container">
+                <div class="container d-flex align-items-center justify-content-center mx-0">
+                    <div class="row">
+                        <div v-for="(game,i) in package1Games" :key="i">
+                            <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-left: 25px;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,7 +39,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <PackageExample/>
+        <!-- <div class="row mt-3">
             <div class="br-curve-panel br-curve-panel-left pull-left">
                 <div class="br-curve-panel-inner">
                     <h2>£11.99 a Month</h2>
@@ -43,14 +49,16 @@
                     </div>
                 </div>
             </div>
-            <div class="container d-flex align-items-center justify-content-center mx-0">
-                <div class="row">
-                    <div v-for="(game,i) in package2Games" :key="i">
-                        <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-right: 25px;">
+            <div class="br-game-container">
+                <div class="container d-flex align-items-center justify-content-center mx-0">
+                    <div class="row">
+                        <div v-for="(game,i) in package2Games" :key="i">
+                            <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-right: 25px;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -58,6 +66,7 @@
 import Vue from 'vue';
 import * as popularPackages from '../../../data/Games/popularGames';
 import IGameDisplayPicture from './DTOs/IGameDisplayPicture';
+import PackageExample from './PackageExample.vue';
 
 const relPath = require.context('../../assets', true, /\.jpg$/);
 
@@ -66,7 +75,6 @@ export default Vue.extend({
     data() {
         return {
             popularPackages,
-
         };
     },
     computed: {
@@ -90,6 +98,9 @@ export default Vue.extend({
             });
         },
     },
+    components: {
+        PackageExample,
+    }
 });
 </script>
 
@@ -109,8 +120,12 @@ export default Vue.extend({
     h3 {
         font-size: 1.8em;
     }
+    .br-game-container {
+        display: flex;
+        width: 100% - ($curved-panel-width / 2);
+        height: $curved-panel-height;
+    }
     .br-curve-panel {
-        margin-top: 50px;
         border-radius: 100%;
         width: $curved-panel-width;
         position: relative;
