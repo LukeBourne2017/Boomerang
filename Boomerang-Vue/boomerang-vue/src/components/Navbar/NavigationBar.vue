@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="navbar-collapse justify-content-md-center">
             <ul class="navbar-nav">
                 <li v-for="(link, i) in links" :key="i" 

@@ -20,7 +20,9 @@
                 <button type="button" class="btn btn-primary btn-lg">View Rental Packages</button>
             </div>
         </div>
-        <img v-once class="pull-right force-back" :src="bannerImg" :alt="imgText" width="50%"/>
+        <transition appear name="slide-to-left" @after-enter="afterEnter">
+            <img class="pull-right force-back" :src="bannerImg" :alt="imgText" width="50%"/>
+        </transition>
     </div>
 </template>
 
@@ -34,8 +36,14 @@ export default Vue.extend({
         return {
             bannerImg: relPath('./Ass_Creed_Background.jpg'),
             imgText: 'Assassins Creed Image',
+            imgDisplacement: 0,
         };
     },
+    methods: {
+        afterEnter(el: any) {
+            el.style.right = '170px';
+        }
+    }
 });
 </script>
 
@@ -67,10 +75,20 @@ ul.br-list-group > .br-list-item {
         font-size: 1.8em;
         padding-left: 40px;
     }
-    button{
+    button {
         margin-top: 20px;
         margin-left: 40px;
     }
+}
+
+.slide-to-left-enter-active {
+    transition: right 10s ease;
+}
+.slide-to-left-enter {
+    right: 0;
+}
+.slide-to-left-enter-to {
+    right: 170px;
 }
 </style>
 

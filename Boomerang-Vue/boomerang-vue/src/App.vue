@@ -1,9 +1,13 @@
 <template>
   <div>
-      <AppHeader/>
-      <NavigationBar/>
-      <HomeBanner/>
-      <PackageExamples/>
+      <div class="fixed-top">
+          <AppHeader/>
+          <NavigationBar/>
+      </div>
+      <div style="padding-top: 119px">
+          <HomeBanner/>
+          <PackageExamples/>
+      </div>
   </div>
 </template>
 
