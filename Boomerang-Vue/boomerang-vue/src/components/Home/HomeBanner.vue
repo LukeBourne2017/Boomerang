@@ -40,8 +40,11 @@ export default Vue.extend({
         };
     },
     methods: {
+        beforeEnter(el: any) {
+            el.style.right = -el.offsetWidth;
+        },
         afterEnter(el: any) {
-            el.style.right = '170px';
+            el.style.right = 0;
         }
     }
 });
@@ -82,13 +85,27 @@ ul.br-list-group > .br-list-item {
 }
 
 .slide-to-left-enter-active {
-    transition: right 10s ease;
+    animation: slide-to-left 10s;
+    animation-timing-function: linear;
 }
-.slide-to-left-enter {
-    right: 0;
-}
-.slide-to-left-enter-to {
-    right: 170px;
+@keyframes slide-to-left {
+    from {
+        right: -100%;
+        // animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.075);
+    }
+    10% {
+        right: 25px;
+    }
+    15% {
+        right: -25px;
+    }
+    90% {
+        right: 170px;
+        // animation-timing-function: ease-in-out;
+    }
+    to {
+        right: 100%;
+    }
 }
 </style>
 
