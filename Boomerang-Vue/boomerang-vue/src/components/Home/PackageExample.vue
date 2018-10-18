@@ -8,11 +8,7 @@
         </div>
         <div class="br-game-container">
             <div class="container d-flex align-items-center justify-content-center mx-0">
-                <div class="row">
-                    <div v-for="(game,i) in games" :key="i">
-                        <img :src="game.imageSrc" :alt="game.imageAlt" height="200px" style="padding-right: 25px;">
-                    </div>
-                </div>
+                <GameBoxDisplayPanel :games="games" :side="side"/>
             </div>
         </div>
     </div>
@@ -20,6 +16,7 @@
 
 <script lang="ts">
 import IGameDisplayPicture from './Dtos/IGameDisplayPicture';
+import GameBoxDisplayPanel from './GameBoxDisplayPanel.vue';
 import Vue from 'vue';
 export default Vue.extend({
     name: 'PackageExample',
@@ -47,6 +44,9 @@ export default Vue.extend({
                 'order-2': this.side === 'right',
             };
         },
+    },
+    components: {
+        GameBoxDisplayPanel,
     },
 });
 </script>
@@ -84,10 +84,11 @@ export default Vue.extend({
         &.br-curve-panel-right {
             background: linear-gradient(165deg, #808080 0%,#b3b3b3 25%,#a7a7a7 26%,#c2c2c2 50%);
             left: (200% - $curved-panel-width) / 2;
-             margin-left: -((200% - $curved-panel-width) / 2);
+            margin-left: -((200% - $curved-panel-width) / 2);
             .br-curve-panel-inner {
                 right: ($curved-panel-width / 4) + ($curved-panel-width / 12);
             }
         }
     }
+
 </style>

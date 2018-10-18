@@ -20,9 +20,7 @@
                 <button type="button" class="btn btn-primary btn-lg">View Rental Packages</button>
             </div>
         </div>
-        <transition appear name="slide-to-left" @after-enter="afterEnter">
-            <img class="pull-right force-back" :src="bannerImg" :alt="imgText" width="50%"/>
-        </transition>
+        <img class="pull-right force-back" :src="bannerImg" :alt="imgText" width="50%"/>
     </div>
 </template>
 
@@ -39,14 +37,6 @@ export default Vue.extend({
             imgDisplacement: 0,
         };
     },
-    methods: {
-        beforeEnter(el: any) {
-            el.style.right = -el.offsetWidth;
-        },
-        afterEnter(el: any) {
-            el.style.right = 0;
-        }
-    }
 });
 </script>
 
@@ -57,6 +47,7 @@ $transuclant-colour: rgba(44, 48, 51, 0);
 .br-banner-overlay {
     display: inline-block;
     background-image: linear-gradient(90deg, darken($colour, 8%) 45%, darken($colour, 4%) 55%, $transuclant-colour);
+    background-position-x: 0;
 }
 .force-back {
     z-index: -10;
@@ -81,30 +72,6 @@ ul.br-list-group > .br-list-item {
     button {
         margin-top: 20px;
         margin-left: 40px;
-    }
-}
-
-.slide-to-left-enter-active {
-    animation: slide-to-left 10s;
-    animation-timing-function: linear;
-}
-@keyframes slide-to-left {
-    from {
-        right: -100%;
-        // animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.075);
-    }
-    10% {
-        right: 25px;
-    }
-    15% {
-        right: -25px;
-    }
-    90% {
-        right: 170px;
-        // animation-timing-function: ease-in-out;
-    }
-    to {
-        right: 100%;
     }
 }
 </style>
